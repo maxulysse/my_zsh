@@ -26,6 +26,8 @@ antigen bundle Tarrasch/zsh-bd
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+antigen theme CodeMonkeyMike/ZshTheme-CodeMachine
+
 antigen apply
 
 # ALIAS

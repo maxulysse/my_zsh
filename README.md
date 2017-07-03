@@ -17,16 +17,17 @@ Set zsh as the default login shell
 ```bash
 chsh -s /bin/zsh user
 ```
-Install antigen and oh-my-zsh
+Install antigen
 ```bash
-curl -L git.io/antigen > antigen.zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/antigen.git ~/antigen
 ```
 Copy my .zshrc and .alias files
 ```bash
 curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.zshrc -o ~/.zshrc
 curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.alias -o ~/.alias
 ```
+
+Include theme based on https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine
 
 ## Credits
 - [linuxg.net](http://linuxg.net/how-to-install-zsh-shell-how-to-set-it-as-a-default-login-shell/)
