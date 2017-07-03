@@ -63,8 +63,8 @@ START_LINE_TWO="%{$fg_bold[blue]%}╰─"
 THE_TIP="${TIP_COLOR}≻%{$reset_color%}"
 PREFIX="%{$fg_bold[blue]%}[ "
 SUFFIX="%{$fg_bold[blue]%} ]"
-MY_USER="%{$fg_no_bold[white]%}%n"
-MY_HOST="%{$fg_no_bold[white]%}%m"
+MY_USER="%{$fg_bold[white]%}%n"
+MY_HOST="%{$fg_bold[white]%}%m"
 MY_PATH="%{$fg_bold[white]%}%${PWD/#$HOME/~}"
 SSH="%{$fg_bold[green]%}(ssh)"
 
@@ -74,10 +74,10 @@ ${START_LINE_TWO}${THE_TIP}'
 
 #Git Repo Info
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[cyan]%}[ %{$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[020]%}[ %{$fg_bold[white]%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✘"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[cyan]]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" $FG[020]]%{$reset_color%}"

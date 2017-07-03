@@ -17,7 +17,7 @@ DISABLE_CORRECTION="true"
 # DATE
 HIST_STAMPS="yyyy-mm-dd"
 
-# BUNDLES
+# antigen BUNDLES
 antigen bundle arialdomartini/oh-my-git
 antigen bundle command-not-found
 antigen bundle extract
