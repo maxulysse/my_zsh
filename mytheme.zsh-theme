@@ -68,26 +68,16 @@ MY_HOST="%{$fg_no_bold[white]%}%m"
 MY_PATH="%{$fg_bold[white]%}%${PWD/#$HOME/~}"
 SSH="%{$fg_bold[green]%}(ssh)"
 
-# Current time 12-hour format
-MY_TIME="%{$fg_no_bold[white]%}%t%{$reset_color%}"
-
-# Return code of last command executed
-MY_RETURN="%{$fg_no_bold[white]%}%?%{$reset_color%}"
-
-# Number of terminals opened
-MY_TERMS="%{$fg_no_bold[white]%}%L%{$reset_color%}"
-
 # Line one and two of the prompt
 PROMPT='${START_LINE_ONE}${PREFIX}${MY_USER}@${MY_HOST}${SUFFIX} ${PREFIX}${MY_PATH}${SUFFIX} $(my_git_prompt) $(ssh_connection) $(repos_type)
 ${START_LINE_TWO}${THE_TIP}'
-RPS1="$(vi_mode_prompt_info) ${MY_RETURN}"
 
 #Git Repo Info
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[green]%}[ %{$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[cyan]%}[ %{$fg_bold[white]%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✘"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[green]]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[cyan]]%{$reset_color%}"
