@@ -22,7 +22,6 @@ antigen bundle arialdomartini/oh-my-git
 antigen bundle command-not-found
 antigen bundle extract
 antigen bundle git
-antigen bundle git-extras
 antigen bundle Tarrasch/zsh-bd
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
