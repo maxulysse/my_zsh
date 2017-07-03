@@ -24,9 +24,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ```
 Copy my .zshrc and .alias files
 ```bash
-curl https://raw.github.com/MaxUlysse/myzsh/master/.zshrc -o ~/.zshrc
-curl https://raw.github.com/MaxUlysse/myzsh/master/.alias -o ~/.alias
+curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.zshrc -o ~/.zshrc
+curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.alias -o ~/.alias
 ```
+
 ## Credits
 - [linuxg.net](http://linuxg.net/how-to-install-zsh-shell-how-to-set-it-as-a-default-login-shell/)
 - [github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
