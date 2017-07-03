@@ -44,7 +44,7 @@ function my_current_branch() {
 
 if [ "$(whoami)" = "root" ]
 then TIP_COLOR="%{$fg_bold[red]%}"
-else TIP_COLOR="%{$FG[021]%}"
+else TIP_COLOR="%{$fg_bold[blue]%}"
 fi
 
 function ssh_connection() {
@@ -58,11 +58,11 @@ function repos_type {
   hg root >/dev/null 2>/dev/null && echo '${PREFIX}☿${SUFFIX}' && return
   echo ''
 }
-START_LINE_ONE="%{$FG[019]%}╭──"
-START_LINE_TWO="%{$FG[019]%}╰─"
+START_LINE_ONE="%{$fg_bold[blue]%}╭──"
+START_LINE_TWO="%{$fg_bold[blue]%}╰─"
 THE_TIP="${TIP_COLOR}≻%{$reset_color%}"
-PREFIX="%{$FG[019]%}[ "
-SUFFIX="%{$FG[019]%} ]"
+PREFIX="%{$fg_bold[blue]%}[ "
+SUFFIX="%{$fg_bold[blue]%} ]"
 MY_USER="%{$fg_bold[white]%}%n"
 MY_HOST="%{$fg_bold[white]%}%m"
 MY_PATH="%{$fg_bold[white]%}%${PWD/#$HOME/~}"
