@@ -52,12 +52,6 @@ function ssh_connection() {
     echo "$SSH"
   fi
 }
-# Outputs a symbol for the repository type
-function repos_type {
-  git branch >/dev/null 2>/dev/null && echo '' && return
-  hg root >/dev/null 2>/dev/null && echo '${PREFIX}☿${SUFFIX}' && return
-  echo ''
-}
 START_LINE_ONE="%{$fg_bold[blue]%}╭──"
 START_LINE_TWO="%{$fg_bold[blue]%}╰─"
 THE_TIP="${TIP_COLOR}≻%{$reset_color%}"
@@ -69,15 +63,15 @@ MY_PATH="%{$fg_bold[white]%}%${PWD/#$HOME/~}"
 SSH="%{$fg_bold[green]%}(ssh)"
 
 # Line one and two of the prompt
-PROMPT='${START_LINE_ONE}${PREFIX}${MY_USER}@${MY_HOST}${SUFFIX} ${PREFIX}${MY_PATH}${SUFFIX} $(my_git_prompt) $(ssh_connection) $(repos_type)
+PROMPT='${START_LINE_ONE}${PREFIX}${MY_USER}@${MY_HOST}${SUFFIX} ${PREFIX}${MY_PATH}${SUFFIX} $(my_git_prompt) $(ssh_connection)
 ${START_LINE_TWO}${THE_TIP}'
 
 #Git Repo Info
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[020]%}[ %{$fg_bold[white]%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}☗"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}✔"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}◒"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✘"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" $FG[020]]%{$reset_color%}"
