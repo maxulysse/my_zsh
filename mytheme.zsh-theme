@@ -1,5 +1,5 @@
 # based on https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine
-# and https://github.com/arialdomartini/oh-my-git
+# and https://github.com/arialdomartini/oh-my-git-themes
 
 : ${omg_is_a_git_repo_symbol:=''}
 : ${omg_has_untracked_files_symbol:=''}        #                ?    

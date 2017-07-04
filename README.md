@@ -15,7 +15,7 @@ sudo apt-get install zsh
 ```
 Set zsh as the default login shell
 ```bash
-chsh -s /bin/zsh user
+chsh -s /bin/zsh ${USER}
 ```
 Install antigen
 ```bash
@@ -27,7 +27,7 @@ curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.zshrc -o ~/.zshrc
 curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.alias -o ~/.alias
 ```
 
-Include theme based on https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine
+Include my own theme based on [CodeMachine](https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine) and [oppa-lana-style](https://github.com/arialdomartini/oh-my-git-themes)
 
 ## Credits
 - [linuxg.net](http://linuxg.net/how-to-install-zsh-shell-how-to-set-it-as-a-default-login-shell/)

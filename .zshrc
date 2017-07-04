@@ -1,6 +1,7 @@
 # PATHS
+export GOPATH=$HOME/workspace/go
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$GOROOT/bin:/usr/local/go/bin:$HOME/bin
 
 # LOAD ANTIGEN — plugin manager
 source $HOME/antigen/antigen.zsh
