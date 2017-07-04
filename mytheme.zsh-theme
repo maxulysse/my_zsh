@@ -189,23 +189,7 @@ function custom_git_prompt {
     local current_path="%~"
 
     if [[ $is_a_git_repo == true ]]; then
-        # on filesystem
         prompt="${PREFIX}${white_on_black} "
-        prompt+=$(enrich_append $is_a_git_repo $omg_is_a_git_repo_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_stashes $omg_has_stashes_symbol "${yellow_on_black}")
-        prompt+=$(enrich_append $has_untracked_files $omg_has_untracked_files_symbol "${red_on_black}")
-        prompt+=$(enrich_append $has_modifications $omg_has_modifications_symbol "${red_on_black}")
-        prompt+=$(enrich_append $has_deletions $omg_has_deletions_symbol "${red_on_black}")
-
-        # ready
-        prompt+=$(enrich_append $has_adds $omg_has_adds_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_modifications_cached $omg_has_cached_modifications_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_deletions_cached $omg_has_cached_deletions_symbol "${white_on_black}")
-
-        # next operation
-        prompt+=$(enrich_append $ready_to_commit $omg_ready_to_commit_symbol "${red_on_black}")
-        prompt+=$(enrich_append $action "${omg_has_action_in_progress_symbol} $action" "${red_on_black}")
-
         # where
         if [[ $detached == true ]]; then
             prompt+=$(enrich_append $detached $omg_detached_symbol "${red_on_black}")
@@ -237,6 +221,22 @@ function custom_git_prompt {
                 prompt+=$(enrich_append true "(${current_branch} ${type_of_upstream} ${upstream//\/$current_branch/})" "${red_on_black}")
             fi
         fi
+        # on filesystem
+        prompt+=$(enrich_append $is_a_git_repo $omg_is_a_git_repo_symbol "${white_on_black}")
+        prompt+=$(enrich_append $has_stashes $omg_has_stashes_symbol "${yellow_on_black}")
+        prompt+=$(enrich_append $has_untracked_files $omg_has_untracked_files_symbol "${red_on_black}")
+        prompt+=$(enrich_append $has_modifications $omg_has_modifications_symbol "${red_on_black}")
+        prompt+=$(enrich_append $has_deletions $omg_has_deletions_symbol "${red_on_black}")
+
+        # ready
+        prompt+=$(enrich_append $has_adds $omg_has_adds_symbol "${white_on_black}")
+        prompt+=$(enrich_append $has_modifications_cached $omg_has_cached_modifications_symbol "${white_on_black}")
+        prompt+=$(enrich_append $has_deletions_cached $omg_has_cached_deletions_symbol "${white_on_black}")
+
+        # next operation
+        prompt+=$(enrich_append $ready_to_commit $omg_ready_to_commit_symbol "${red_on_black}")
+        prompt+=$(enrich_append $action "${omg_has_action_in_progress_symbol} $action" "${red_on_black}")
+
         prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${red_on_black}")
         prompt+=${SUFFIX}
     fi
