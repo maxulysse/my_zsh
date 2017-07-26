@@ -1,51 +1,48 @@
 # based on https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine
 # and https://github.com/arialdomartini/oh-my-git-themes
 
-: ${omg_is_a_git_repo_symbol:=''}
-: ${omg_has_untracked_files_symbol:=''}        #                ?    
-: ${omg_has_adds_symbol:=''}
-: ${omg_has_deletions_symbol:=''}
-: ${omg_has_cached_deletions_symbol:=''}
-: ${omg_has_modifications_symbol:=''}
-: ${omg_has_cached_modifications_symbol:=''}
-: ${omg_ready_to_commit_symbol:=''}            #   →
-: ${omg_is_on_a_tag_symbol:=''}                #   
-: ${omg_needs_to_merge_symbol:='ᄉ'}
-: ${omg_detached_symbol:=''}
-: ${omg_can_fast_forward_symbol:=''}
-: ${omg_has_diverged_symbol:=''}               #   
-: ${omg_not_tracked_branch_symbol:=''}
-: ${omg_rebase_tracking_branch_symbol:=''}     #   
-: ${omg_merge_tracking_branch_symbol:=''}      #  
-: ${omg_should_push_symbol:=''}                #    
-: ${omg_has_stashes_symbol:=''}
-: ${omg_has_action_in_progress_symbol:=''}     #                  
+: ${symbol_git_repo:=''}
+: ${symbol_untracked_files:=''}
+: ${symbol_adds:=''}
+: ${symbol_deletions:=''}
+: ${symbol_cached_deletions:=''}
+: ${symbol_modifications:=''}
+: ${symbol_cached_modifications:=''}
+: ${symbol_ready_to_commit:=''}
+: ${symbol_on_a_tag:=''}
+: ${symbol_detached:=''}
+: ${symbol_fast_forward:=''}
+: ${symbol_diverged:=''}
+: ${symbol_not_tracked_branch:=''}
+: ${symbol_rebase_tracking_branch:=''}
+: ${symbol_merge_tracking_branch:=''}
+: ${symbol_should_push:=''}
+: ${symbol_stashes:=''}
+: ${symbol_in_progress:=''}
 
 autoload -U colors && colors
 
 if [ "$(whoami)" = "root" ]
-  then TIP_COLOR="%{$fg_bold[red]%}"
-  else TIP_COLOR="%{$fg_bold[blue]%}"
+  then TIP_COLOR="${COLOR_RED}"
+else TIP_COLOR="${COLOR_BLUE}"
 fi
 
-function ssh_connection() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    echo "$SSH"
-  fi
-}
-START_LINE_ONE="%{$fg_bold[blue]%}╭──"
-START_LINE_TWO="%{$fg_bold[blue]%}╰─"
+COLOR_BLUE="%{$fg_bold[blue]%}"
+COLOR_RED="%{$fg_bold[red]%}"
+COLOR_WHITE="%{$fg_bold[white]%}"
+
+START_LINE_ONE="╭──"
+START_LINE_TWO="╰─"
 THE_TIP="${TIP_COLOR}≻%{$reset_color%}"
-PREFIX="%{$fg_bold[blue]%}[ "
-SUFFIX="%{$fg_bold[blue]%} ]"
-MY_USER="%{$fg_bold[white]%}%n"
-MY_HOST="%{$fg_bold[white]%}%m"
-MY_PATH="%{$fg_bold[white]%}%${PWD/#$HOME/~}"
-SSH="%{$fg_bold[green]%}(ssh)"
+PREFIX="[ "
+SUFFIX=" ]"
+MY_USER="%n"
+MY_HOST="%m"
+MY_PATH="%~"
 
 # Line one and two of the prompt
-PROMPT='${START_LINE_ONE}${PREFIX}${MY_USER}@${MY_HOST}${SUFFIX} ${PREFIX}${MY_PATH}${SUFFIX} $(git_prompt) $(ssh_connection)
-${START_LINE_TWO}${THE_TIP}'
+PROMPT='${COLOR_BLUE}${START_LINE_ONE}${PREFIX}${COLOR_WHITE}${MY_USER}@${MY_HOST}${COLOR_BLUE}${SUFFIX} ${PREFIX}${COLOR_WHITE}${MY_PATH}${COLOR_BLUE}${SUFFIX} $(git_prompt)
+${COLOR_BLUE}${START_LINE_TWO}${THE_TIP}'
 
 function get_current_action () {
   local info="$(git rev-parse --git-dir 2>/dev/null)"
@@ -145,7 +142,7 @@ function git_prompt {
 function enrich_append {
     local flag=$1
     local symbol=$2
-    local color=${3:-$omg_default_color_on}
+    local color=${3:-$default_color_on}
     if [[ $flag == false ]]; then symbol=' '; fi
 
     echo -n "${color}${symbol}  "
@@ -184,7 +181,7 @@ function custom_git_prompt {
     local yellow_on_black="%K{black}%F{yellow}"
 
     # Flags
-    local omg_default_color_on="${white_on_black}"
+    local default_color_on="${white_on_black}"
 
     local current_path="%~"
 
@@ -192,26 +189,26 @@ function custom_git_prompt {
         prompt="${PREFIX}${white_on_black} "
         # where
         if [[ $detached == true ]]; then
-            prompt+=$(enrich_append $detached $omg_detached_symbol "${red_on_black}")
+            prompt+=$(enrich_append $detached $symbol_detached "${red_on_black}")
             prompt+=$(enrich_append $detached "(${current_commit_hash:0:7})" "${red_on_black}")
         else
             if [[ $has_upstream == false ]]; then
-                prompt+=$(enrich_append true "-- ${omg_not_tracked_branch_symbol}  --  (${current_branch})" "${red_on_black}")
+                prompt+=$(enrich_append true "-- ${symbol_not_tracked_branch}  --  (${current_branch})" "${red_on_black}")
             else
                 if [[ $will_rebase == true ]]; then
-                    local type_of_upstream=$omg_rebase_tracking_branch_symbol
+                    local type_of_upstream=$symbol_rebase_tracking_branch
                 else
-                    local type_of_upstream=$omg_merge_tracking_branch_symbol
+                    local type_of_upstream=$symbol_merge_tracking_branch
                 fi
 
                 if [[ $has_diverged == true ]]; then
-                    prompt+=$(enrich_append true "-${commits_behind} ${omg_has_diverged_symbol} +${commits_ahead}" "${red_on_black}")
+                    prompt+=$(enrich_append true "-${commits_behind} ${symbol_diverged} +${commits_ahead}" "${red_on_black}")
                 else
                     if [[ $commits_behind -gt 0 ]]; then
-                        prompt+=$(enrich_append true "-${commits_behind} %F{white}${omg_can_fast_forward_symbol}%F{black} --" "${red_on_black}")
+                        prompt+=$(enrich_append true "-${commits_behind} %F{white}${symbol_fast_forward}%F{black} --" "${red_on_black}")
                     fi
                     if [[ $commits_ahead -gt 0 ]]; then
-                        prompt+=$(enrich_append true "-- %F{white}${omg_should_push_symbol}%F{black}  +${commits_ahead}" "${red_on_black}")
+                        prompt+=$(enrich_append true "-- %F{white}${symbol_should_push}%F{black}  +${commits_ahead}" "${red_on_black}")
                     fi
                     if [[ $commits_ahead == 0 && $commits_behind == 0 ]]; then
                          prompt+=$(enrich_append true " --   -- " "${red_on_black}")
@@ -222,23 +219,23 @@ function custom_git_prompt {
             fi
         fi
         # on filesystem
-        prompt+=$(enrich_append $is_a_git_repo $omg_is_a_git_repo_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_stashes $omg_has_stashes_symbol "${yellow_on_black}")
-        prompt+=$(enrich_append $has_untracked_files $omg_has_untracked_files_symbol "${red_on_black}")
-        prompt+=$(enrich_append $has_modifications $omg_has_modifications_symbol "${red_on_black}")
-        prompt+=$(enrich_append $has_deletions $omg_has_deletions_symbol "${red_on_black}")
+        prompt+=$(enrich_append $is_a_git_repo $symbol_git_repo "${white_on_black}")
+        prompt+=$(enrich_append $has_stashes $symbol_stashes "${yellow_on_black}")
+        prompt+=$(enrich_append $has_untracked_files $symbol_untracked_files "${red_on_black}")
+        prompt+=$(enrich_append $has_modifications $symbol_modifications "${red_on_black}")
+        prompt+=$(enrich_append $has_deletions $symbol_deletions "${red_on_black}")
 
         # ready
-        prompt+=$(enrich_append $has_adds $omg_has_adds_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_modifications_cached $omg_has_cached_modifications_symbol "${white_on_black}")
-        prompt+=$(enrich_append $has_deletions_cached $omg_has_cached_deletions_symbol "${white_on_black}")
+        prompt+=$(enrich_append $has_adds $symbol_adds "${white_on_black}")
+        prompt+=$(enrich_append $has_modifications_cached $symbol_cached_modifications "${white_on_black}")
+        prompt+=$(enrich_append $has_deletions_cached $symbol_cached_deletions "${white_on_black}")
 
         # next operation
-        prompt+=$(enrich_append $ready_to_commit $omg_ready_to_commit_symbol "${red_on_black}")
-        prompt+=$(enrich_append $action "${omg_has_action_in_progress_symbol} $action" "${red_on_black}")
+        prompt+=$(enrich_append $ready_to_commit $symbol_ready_to_commit "${red_on_black}")
+        prompt+=$(enrich_append $action "${symbol_in_progress} $action" "${red_on_black}")
 
-        prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${red_on_black}")
-        prompt+=${SUFFIX}
+        prompt+=$(enrich_append ${is_on_a_tag} "${symbol_on_a_tag} ${tag_at_current_commit}" "${red_on_black}")
+        prompt+=${COLOR_BLUE}${SUFFIX}
     fi
     echo "${prompt}"
 }
