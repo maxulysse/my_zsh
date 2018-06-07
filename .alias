@@ -1,1 +1,2 @@
 alias git="hub"
+alias state="git fetch --prune ; git fetch --tags ; clear && git branch -vv && git status"
