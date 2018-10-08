@@ -22,14 +22,14 @@
 
 autoload -U colors && colors
 
+COLOR_BLUE="%{$fg_bold[blue]%}"
+COLOR_RED="%{$fg_bold[red]%}"
+COLOR_WHITE="%{$fg_bold[white]%}"
+
 if [ "$(whoami)" = "root" ]
   then TIP_COLOR="${COLOR_RED}"
 else TIP_COLOR="${COLOR_BLUE}"
 fi
-
-COLOR_BLUE="%{$fg_bold[blue]%}"
-COLOR_RED="%{$fg_bold[red]%}"
-COLOR_WHITE="%{$fg_bold[white]%}"
 
 START_LINE_ONE="╭──"
 START_LINE_TWO="╰─"
