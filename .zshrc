@@ -1,7 +1,11 @@
 # PATHS
-export GOPATH=$HOME/workspace/go
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$PATH:$GOROOT/bin:/usr/local/go/bin:$HOME/bin
+export GOROOT=/usr/local/go
+export CONDA=$HOME/miniconda3/bin
+export PATH=$HOME/.local/bin:$HOME/bin:$GOROOT/bin:/snap/bin:$CONDA:$HOME/.rvm/bin:$PATH
+export NXF_SINGULARITY_CACHEDIR=$HOME/.containers
+export RUBY_VERSION=ruby-2.5.0
+source $HOME/.rvm/scripts/rvm
 
 # LOAD ANTIGEN — plugin manager
 source $HOME/antigen/antigen.zsh
