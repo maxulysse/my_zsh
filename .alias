@@ -1,2 +1,4 @@
 alias git="hub"
+alias irma="ssh -X ${USER}@irma.uppmax.uu.se"
+alias rackham="ssh -X ${USER}@rackham.uppmax.uu.se"
 alias state="git fetch --prune ; git fetch --tags ; clear && git branch -vv && git status"
