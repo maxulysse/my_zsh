@@ -33,6 +33,11 @@ antigen apply
 # ALIAS
 source ~/.alias
 
+# Connect to Bianca
+function bianca() {
+ssh -A ${USER}-"$@"@bianca.uppmax.uu.se
+}
+
 # HUB
 eval "$(hub alias -s)"
 fpath=(~/.zsh/completions $fpath)
