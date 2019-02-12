@@ -1,3 +1,5 @@
+alias dockerrm="docker rm \$(docker ps -a -f status=exited -q)"
+alias dockerrmi="docker rmi \$(docker images -a -q)"
 alias git="hub"
 alias irma="ssh -X ${USER}@irma.uppmax.uu.se"
 alias rackham="ssh -X ${USER}@rackham.uppmax.uu.se"
