@@ -1,13 +1,16 @@
 # PATHS
-export ZSH=$HOME/.oh-my-zsh
-export GOROOT=/usr/local/go
-export CONDA=$HOME/miniconda3/bin
-export PATH=$HOME/bin:$HOME/.local/bin:$HOME/bin:$GOROOT/bin:/snap/bin:$CONDA:$HOME/.rvm/bin:$PATH
+export CONDA=${HOME}/miniconda3/bin
+export GOPATH=${HOME}/go
+export ZSH=${HOME}/.oh-my-zsh
+export PATH=${HOME}/bin:${HOME}/.local/bin:${HOME}/bin:${GOPATH}/bin:/snap/bin:${CONDA}:${HOME}/.rvm/bin:${PATH}
+
+# VERSIONS
 export RUBY_VERSION=ruby-2.5.0
-source $HOME/.rvm/scripts/rvm
+
+source ${HOME}/.rvm/scripts/rvm
 
 # LOAD ANTIGEN — plugin manager
-source $HOME/antigen/antigen.zsh
+source ${HOME}/antigen/antigen.zsh
 
 # LOAD OH-MY-ZSH
 antigen use oh-my-zsh
@@ -58,7 +61,7 @@ else
         . "/home/maxime/miniconda3/etc/profile.d/conda.sh"
         CONDA_CHANGEPS1=false conda activate base
     else
-        \export PATH="/home/maxime/miniconda3/bin:$PATH"
+        \export PATH="/home/maxime/miniconda3/bin:${PATH}"
     fi
 fi
 unset __conda_setup
