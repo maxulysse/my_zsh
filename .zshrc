@@ -1,12 +1,12 @@
 # PATHS
 export CONDA=${HOME}/miniconda3/bin
-export GOPATH=${HOME}/go
+export GOPATH=${HOME}/workspace/go
+export GOROOT=/usr/local/go
 export ZSH=${HOME}/.oh-my-zsh
-export PATH=${HOME}/bin:${HOME}/.local/bin:${HOME}/bin:${GOPATH}/bin:/snap/bin:${CONDA}:${HOME}/.rvm/bin:${PATH}
+export PATH=${HOME}/bin:${HOME}/.local/bin:${HOME}/bin:${GOROOT}/bin:/${GOPATH}/bin:/snap/bin:${CONDA}:${HOME}/.rvm/bin:${PATH}
 
-# VERSIONS
+# LOAD RVM - RUBY manager
 export RUBY_VERSION=ruby-2.5.0
-
 source ${HOME}/.rvm/scripts/rvm
 
 # LOAD ANTIGEN — plugin manager
