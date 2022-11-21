@@ -27,13 +27,11 @@ antigen bundle command-not-found
 antigen bundle copyfile
 antigen bundle docker
 antigen bundle extract
-antigen bundle gem
 antigen bundle git
 antigen bundle screen
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle Tarrasch/zsh-bd
 antigen apply
 
 # ALIAS

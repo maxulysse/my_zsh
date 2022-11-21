@@ -28,19 +28,18 @@ chsh -s /bin/zsh ${USER}
 Install antigen
 
 ```bash
-git clone https://github.com/zsh-users/antigen.git ~/antigen
+git clone https://github.com/zsh-users/antigen.git ${WORKSPACE}/antigen
 ```
 
 Copy my .zshrc and .alias files
 
 ```bash
-curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.zshrc -o ~/.zshrc
-curl https://raw.githubusercontent.com/MaxUlysse/myzsh/master/.alias -o ~/.alias
+curl https://raw.githubusercontent.com/maxulysse/myzsh/main/.zshrc -o ${HOME}/.zshrc
+curl https://raw.githubusercontent.com/maxulysse/myzsh/main/.alias -o ${HOME}/.alias
 ```
 
-Include my own theme based on [CodeMachine](https://github.com/CodeMonkeyMike/ZshTheme-CodeMachine) and [oppa-lana-style](https://github.com/arialdomartini/oh-my-git-themes)
-
 ## Credits
+
 - [linuxg.net](http://linuxg.net/how-to-install-zsh-shell-how-to-set-it-as-a-default-login-shell/)
 - [github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 - [github.com/zsh-users/antigen](https://github.com/zsh-users/antigen)
